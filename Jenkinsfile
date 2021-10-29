@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Maven Build"){
             when {
-                branch = "develop"
+                branch "develop"
             }
             steps{
                 sh "mvn clean package"
@@ -11,7 +11,7 @@ pipeline{
         }
         stage("Sonar Analysis"){
             when {
-                branch = "develop"
+                branch "develop"
             }
             steps{
                 echo "perform sonar analysis"
@@ -19,7 +19,7 @@ pipeline{
         }
         stage("Dev Deploy"){
             when {
-                branch = "develop"
+                branch "develop"
             }
             steps{
                 echo "Deploy to development"
@@ -27,7 +27,7 @@ pipeline{
         }
         stage("Deploy to QA "){
             when {
-                branch = "qa"
+                branch "qa"
             }
             steps{
                 echo "deploy to qa"
@@ -35,7 +35,7 @@ pipeline{
         }
         stage("Deploy to production "){
             when {
-                branch = "main"
+                branch "main"
             }
             steps{
                 echo "deploy to prod"
